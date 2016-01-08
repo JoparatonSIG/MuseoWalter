@@ -11,16 +11,16 @@ var Museo = require('../models/museo.js');
 
 // POST /nivel
 router.post('/nivel', function (req, res) {
-	 // bodyParser debe hacer la magia
-	 var categoria = req.body.categoria;
-	 var nivel = Museo.Nivel.build({ categoria: categoria });
+// bodyParser debe hacer la magia
+  var categoria = req.body.categoria;
+  var nivel = Museo.Nivel.build({ categoria: categoria });
 
-	 nivel.add(function (success) {
-		  res.json( { message: 'Nivel creado!' } );
-	 },a
-	function (err) {
-	res.send(err);
-	});
+  nivel.add(function (success) {
+	res.json( { message: 'Nivel creado!' } );
+	 					},
+	   			function (err) {
+			 res.send( err );
+	    				});
 });
 
 // (trae todos los niveles)

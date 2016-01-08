@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var estatico = require('./controllers/estatico');
 var usuario = require('./controllers/usuario');
 var nivel = require('./controllers/nivel');
+var obra = require('./controllers/obra');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', estatico);
 app.use('/api', usuario);
 app.use('/api', nivel);
+app.use('/api', obra);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

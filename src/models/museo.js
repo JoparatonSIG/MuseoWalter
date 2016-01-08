@@ -42,13 +42,21 @@ var Usuario = sequelize.import(usuarioPath);
 var nivelPath = path.join(__dirname,'nivel');
 var Nivel = sequelize.import(nivelPath);
 
+// Importar definicion de la tabla Topic
+var obraPath = path.join(__dirname,'obra');
+var Obra = sequelize.import(obraPath);
+
 // los topics pertenecen a un forum registrado
 Usuario.belongsTo(Nivel);
 Nivel.hasMany(Usuario);
+Obra.belongsTo(Usuario);
+Usuario.hasMany(Obra);
 
 // exportar tablas
 exports.Usuario = Usuario;
 exports.Nivel = Nivel;
+exports.Obra = Obra;
+
 
 // sequelize.sync() inicializa tabla de preguntas en DB
 sequelize.sync().then(function () {
@@ -77,7 +85,23 @@ sequelize.sync().then(function () {
           });
         }
       }); // Nivel.count()
+
+
     });
     }
   }); // Usuario.count()
+  Obra.count().then(function (count) {
+    if (count === 0) {
+      Obra.bulkCreate(
+        [
+          { autor: 'autor1', descripcion: '111asdasdasas111' },
+          { autor: 'autor2', descripcion: '2222asdasdasd222' }
+
+        ]
+      ).then(function () {
+        console.log('Base de datos (tabla Obra) inicializada');
+      });
+    }
+  }); // Nivel.count()
+
 });
