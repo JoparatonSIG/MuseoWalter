@@ -5,10 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var usuarios = require('./routes/usuarios');
-var contacto = require('./routes/contacto');
+var estatico = require('./controllers/estatico');
+var usuario = require('./controllers/usuario');
+var nivel = require('./controllers/nivel');
 
 var app = express();
 
@@ -25,9 +24,9 @@ app.use(cookieParser());
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/usuarios', usuarios);
+app.use('/', estatico);
+app.use('/api', usuario);
+app.use('/api', nivel);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -59,6 +58,5 @@ app.use(function (err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
