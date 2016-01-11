@@ -32,11 +32,11 @@ router.post('/', function (req, res) {
 /* (trae todos los tecnicass)
 // GET /tecnicas */
 router.get('/', function (req, res) {
-  var tecnicas = Museo.Tecnicas.build();
+  var tecnica = Museo.Tecnica.build();
 
-  tecnicas.retrieveAll(function (tecnicas) {
+  tecnica.retrieveAll(function (tecnicas) {
     if (tecnicas) {
-      res.json(tecnicass);
+      res.json(tecnicas);
     } else {
       res.send(401, 'No se encontraron Tecnicass');
     }
@@ -69,9 +69,9 @@ router.put('/:tecnicasId', function (req, res) {
 // GET /tecnicas/:tecnicasId
 // Toma un tecnicas por id
 router.get('/:tecnicasId', function (req, res) {
-  var tecnicas = Museo.Tecnicas.build();
+  var tecnica = Museo.Tecnica.build();
 
-  tecnicas.retrieveById(req.params.tecnicasId, function (tecnicas) {
+  tecnica.retrieveById(req.params.tecnicasId, function (tecnicas) {
     if (tecnicas) {
       res.json(tecnicas);
     } else {
