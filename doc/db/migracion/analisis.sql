@@ -13,5 +13,7 @@ INSERT INTO
     IdTipo,
     now(),
     now()
-FROM museojesuitico.analisis ori
+FROM original.analisis ori
+LEFT OUTER JOIN museotest.Obras o
+  ON (ori.IdIdentificacion = o.id)
 ORDER BY ori.IdIdentificacion ASC;

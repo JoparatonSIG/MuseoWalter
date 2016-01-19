@@ -1,5 +1,5 @@
 INSERT INTO
-  museo.Descripciones
+  museotest.Descripciones
   (
     id,
     ObraId,
@@ -31,7 +31,7 @@ INSERT INTO
   Descripcion,
     now(),
     now()
-FROM museoOriginal.descripcion ori
-LEFT OUTER JOIN museo.Obras o
+FROM original.descripcion ori
+LEFT OUTER JOIN museotest.Obras o
   ON (ori.IdIdentificacion = o.id)
 ORDER BY ori.IdDescripcion ASC;

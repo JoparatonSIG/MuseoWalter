@@ -1,5 +1,5 @@
 INSERT INTO
-  museo.Espacios
+  museotest.Espacios
   (
     id,
     espacio,
@@ -19,5 +19,7 @@ INSERT INTO
   UbicaciónInmueble,
     now(),
     now()
-FROM museoOriginal.espacios ori
+FROM original.espacios ori
+LEFT OUTER JOIN museotest.espacios o
+  ON (ori.IdEspacio = o.id)
 ORDER BY ori.IdEspacio ASC;

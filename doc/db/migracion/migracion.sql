@@ -17,18 +17,18 @@ INSERT INTO
     modifica
   )
   SELECT
-    IdIdentificacion,
-    Numero,
-    Codigo,
-    CodigoAnterior1,
-    CodigoAnterior2,
-    Denominacion,
-    Especialidad,
-    Epoca,
-    Autor,
-    FuncionOriginal,
-    TecnicaMaterial,
-    Origen,
+    ori.IdIdentificacion,
+    ori.Numero,
+    ori.Codigo,
+    ori.CodigoAnterior1,
+    ori.CodigoAnterior2,
+    ori.Denominacion,
+    ori.Especialidad,
+    ori.Epoca,
+    ori.Autor,
+    ori.FuncionOriginal,
+    ori.TecnicaMaterial,
+    ori.Origen,
     now(),
     now()
 FROM original.identificacion ori
@@ -46,7 +46,7 @@ INSERT INTO
         id, localidad, codigoLocalidad, municipio, provincia, codigoProvincia, departamento, creacion, modifica
         )
 SELECT
-      IdLugar, localidad, codigoLocalidad, municipio, provincia, codigoProvincia, departamento, now(), now()
+      ori.IdLugar, ori.localidad, ori.codigoLocalidad, ori.municipio, ori.provincia, ori.codigoProvincia, ori.departamento, now(), now()
 FROM original.lugar ori
 LEFT OUTER JOIN museotest.lugares o
   ON (ori.IdLugar = o.id)
@@ -62,7 +62,7 @@ INSERT INTO
          espacio, inmueble, propietario, creacion, modifica, ObraID, LugarId
         )
 SELECT
-       espacio, inmueble, propietario, now(), now(), IdIdentificacion, IdLugar
+       ori.espacio, ori.inmueble, ori.propietario, now(), now(), ori.IdIdentificacion, ori.IdLugar
 FROM original.ubicacion ori
 LEFT OUTER JOIN museotest.lugares o
   ON (ori.IdLugar = o.id)
@@ -83,10 +83,10 @@ INSERT INTO
     modifica
   )
   SELECT
-    IdTipo,
-    Tipo,
-    Subtipo,
-    ValorPredeter,
+    ori.IdTipo,
+    ori.Tipo,
+    ori.Subtipo,
+    ori.ValorPredeter,
     now(),
     now()
 FROM original.analisistipo ori
@@ -107,8 +107,8 @@ INSERT INTO
     modifica
   )
   SELECT
-    IdTecnica,
-    Tecnica,
+    ori.IdTecnica,
+    ori.Tecnica,
     now(),
     now()
 FROM original.tecnicar ori
@@ -129,8 +129,8 @@ INSERT INTO
     modifica
   )
   SELECT
-    IdTecnica,
-    Tecnica,
+    ori.IdTecnica,
+    ori.Tecnica,
     now(),
     now()
 FROM original.tecnica ori
@@ -157,14 +157,14 @@ INSERT INTO
     modifica
   )
   SELECT
-    IdIdentificacion,
-    FechaRelev,
-    FechaCatalog,
-    FechaRevision,
-    QienRelevo,
-    QuienCatalogo,
-    QuienReviso,
-    observaciones,
+    ori.IdIdentificacion,
+    ori.FechaRelev,
+    ori.FechaCatalog,
+    ori.FechaRevision,
+    ori.QienRelevo,
+    ori.QuienCatalogo,
+    ori.QuienReviso,
+    ori.observaciones,
       now(),
       now()
 FROM original.relevamiento ori
@@ -182,7 +182,7 @@ INSERT INTO
         id, ObraId, foto, codArchivoFotografico, numRollo, numFoto, fotografo, fecha, creacion, modifica
         )
 SELECT
-      IdFotografías, IdIdentificacion, foto, codArchivoFotografico, numRollo, numFoto, fotografo, fecha, now(), now()
+      ori.IdFotografías, ori.IdIdentificacion, ori.foto, ori.codArchivoFotografico, ori.numRollo, ori.numFoto, ori.fotografo, ori.fecha, now(), now()
 FROM original.fotografias ori
 LEFT OUTER JOIN museotest.Obras o
   ON (ori.IdIdentificacion = o.id)
@@ -193,7 +193,7 @@ ORDER BY ori.IdFotografías ASC;
 
 
 INSERT INTO
-  museo.Estructuras
+  museotest.Estructuras
   (
     id,
     estructura,
@@ -201,8 +201,8 @@ INSERT INTO
     modifica
   )
   SELECT
-  IdEstructura,
-  Estructura,
+  ori.IdEstructura,
+  ori.Estructura,
     now(),
     now()
 FROM original.estructura ori
@@ -227,12 +227,12 @@ INSERT INTO
     modifica
   )
   SELECT
-  IdEspacio,
-  Espacio,
-  CodigoEspacio,
-  Inmuebles,
-  CodigoInmueble,
-  UbicaciónInmueble,
+  ori.IdEspacio,
+  ori.Espacio,
+  ori.CodigoEspacio,
+  ori.Inmuebles,
+  ori.CodigoInmueble,
+  ori.UbicaciónInmueble,
     now(),
     now()
 FROM original.espacios ori
@@ -263,18 +263,18 @@ INSERT INTO
     modifica
   )
   SELECT
-  IdDescripcion,
-  IdIdentificacion,
-  MarcasInscripciones,
-  DimAlto,
-  DimAncho,
-  DimLongitud,
-  DimProfundidad,
-  DimDiametro,
-  DimEspesor,
-  DimPeso,
-  Observaciones,
-  Descripcion,
+  ori.IdDescripcion,
+  ori.IdIdentificacion,
+  ori.MarcasInscripciones,
+  ori.DimAlto,
+  ori.DimAncho,
+  ori.DimLongitud,
+  ori.DimProfundidad,
+  ori.DimDiametro,
+  ori.DimEspesor,
+  ori.DimPeso,
+  ori.Observaciones,
+  ori.Descripcion,
     now(),
     now()
 FROM original.descripcion ori
@@ -297,10 +297,10 @@ INSERT INTO
     modifica
   )
   SELECT
-    IdConservacion,
-    IdIdentificacion,
-    Conservacion,
-    CondicionesSeguridad,
+    ori.IdConservacion,
+    ori.IdIdentificacion,
+    ori.Conservacion,
+    ori.CondicionesSeguridad,
     now(),
     now()
 FROM original.conservacion ori
@@ -322,9 +322,9 @@ INSERT INTO
     modifica
   )
   SELECT
-    Analisis,
-    IdIdentificacion,
-    IdTipo,
+    ori.Analisis,
+    ori.IdIdentificacion,
+    ori.IdTipo,
     now(),
     now()
 FROM original.analisis ori
@@ -342,7 +342,7 @@ INSERT INTO
        id, ObraId, objetoCodigo, relacion, creacion, modifica
        )
 SELECT
-      IdAccesorios, IdIdentificacion, ObjetoCodigo, Relacion, now(), now()
+      ori.IdAccesorios, ori.IdIdentificacion, ori.ObjetoCodigo, ori.Relacion, now(), now()
 FROM original.accesorios ori
 LEFT OUTER JOIN museotest.Obras o
   ON (ori.IdIdentificacion = o.id)

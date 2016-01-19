@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 INSERT INTO
-  museo.Conservaciones
+  museotest.Conservaciones
   (
     id,
     ObraId,
@@ -16,10 +15,7 @@ INSERT INTO
     CondicionesSeguridad,
     now(),
     now()
-FROM museoOriginal.conservacion ori
-LEFT OUTER JOIN museo.Obras o
+FROM original.conservacion ori
+LEFT OUTER JOIN museotest.Obras o
   ON (ori.IdIdentificacion = o.id)
 ORDER BY ori.IdConservacion ASC;
-=======
-
->>>>>>> 374e604fc97173928506e23633fb75ac6003c2ec

@@ -1,5 +1,5 @@
 INSERT INTO
-  museo.Relevamientos
+  museotest.Relevamientos
   (
     ObraId,
     fechaRelev,
@@ -23,7 +23,7 @@ INSERT INTO
     observaciones,
       now(),
       now()
-FROM museoOriginal.relevamiento ori
-LEFT OUTER JOIN museo.Obras o
+FROM original.relevamiento ori
+LEFT OUTER JOIN museotest.Obras o
   ON (ori.IdIdentificacion = o.id)
 ORDER BY ori.IdIdentificacion ASC;

@@ -1,5 +1,5 @@
 INSERT INTO
-  museo.Estructuras
+  museotest.Estructuras
   (
     id,
     estructura,
@@ -11,5 +11,7 @@ INSERT INTO
   Estructura,
     now(),
     now()
-FROM museoOriginal.estructura ori
+FROM original.estructura ori
+LEFT OUTER JOIN museotest.Estructuras o
+  ON (ori.IdEstructura = o.id)
 ORDER BY ori.IdEstructura ASC;

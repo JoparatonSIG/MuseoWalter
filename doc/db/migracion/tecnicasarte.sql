@@ -11,5 +11,7 @@ INSERT INTO
     Tecnica,
     now(),
     now()
-FROM bolivia.tecnicar ori
+FROM original.tecnicar ori
+LEFT OUTER JOIN museotest.tecnicasarte o
+  ON (ori.IdTecnica = o.id)
 ORDER BY ori.IdTecnica ASC;

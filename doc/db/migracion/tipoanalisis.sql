@@ -15,5 +15,7 @@ INSERT INTO
     ValorPredeter,
     now(),
     now()
-FROM bolivia.analisistipo ori
+FROM original.analisistipo ori
+LEFT OUTER JOIN museotest.tipoanalisis o
+  ON (ori.IdTipo = o.id)
 ORDER BY ori.IdTipo ASC;

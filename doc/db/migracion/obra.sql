@@ -31,7 +31,7 @@ INSERT INTO
     Origen,
     now(),
     now()
-FROM museoOriginal.identificacion ori
+FROM original.identificacion ori
 LEFT OUTER JOIN museotest.Obras o
   ON (ori.IdIdentificacion = o.id)
 ORDER BY ori.IdIdentificacion ASC;
