@@ -1,4 +1,3 @@
-drop table Accesorios;
 drop table Analisis;
 drop table Conservaciones;
 drop table Descripciones;
