@@ -15,7 +15,6 @@ config.description    = pkg.description;
 config.company        = pkg.company;
 config.author         = pkg.author;
 config.keywords       = pkg.keywords;
-console.log(pkg)
 config.engine         = pkg.engines.node || pkg.engines.iojs;
 
 config.port           = process.env.PORT || 3000;

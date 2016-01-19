@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-csslint');
@@ -8,8 +8,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-csscomb');
   grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-githooks');
-  // grunt.loadNpmTasks('grunt-karma');
-  // grunt.loadNpmTasks('grunt-mocha-test');
+//  grunt.loadNpmTasks('grunt-karma');
+//  grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadTasks('grunt');
 
@@ -27,8 +27,7 @@ module.exports = function (grunt) {
         '!src/public/css/**',
         '!src/public/js/**',
         '!src/stylus/**'
-      ]
-    },
+      ]    },
     jshint: {
       options: {
         jshintrc: '.jshintrc',
@@ -107,33 +106,33 @@ module.exports = function (grunt) {
     },
     csscomb: {
       museo: {
-        files: {
-          'src/stylus/museo.css': ['src/public/css/museo.css'],
-        }
+          files: {
+              'src/stylus/museo.css': ['src/public/css/museo.css'],
+          }
       }
     },
 
     csslint: {
-      options: {
-        force: true,
-        absoluteFilePathsForFormatters: true,
-        formatters: [
-                { id: 'compact', dest: 'quality/report/css/compact.xml' }
+       options: {
+           force: true,
+           absoluteFilePathsForFormatters: true,
+           formatters: [
+               {id: 'compact', dest: 'quality/report/css/compact.xml'}
            ]
-      },
-      strict:{
-        options:{
-          force: true,
-          import:2,
-          'box-model':false,
-        },
-        src:['src/public/css/*.css'],
-      },
-      lax: {
-        options: {
-          import: false
-        },
-        src: ['src/public/css/museo.css']
+       },
+       strict:{
+           options:{
+               force: true,
+               import:2,
+               "box-model":false,
+           },
+           src:['src/public/css/*.css'],
+       },
+       lax: {
+            options: {
+                import: false
+            },
+       src: ['src/public/css/museo.css']
       }
     }
   });
